@@ -1,10 +1,12 @@
+node_modules/
+dist/
+.turbo/
+*.tsbuildinfo
+
 # Python
 __pycache__/
 *.py[cod]
 *.egg-info/
-dist/
-build/
-*.egg
 .venv/
 venv/
 env/
@@ -12,7 +14,7 @@ env/
 # Environment
 .env
 .env.local
-*.env
+.env.*
 
 # IDE
 .vscode/
@@ -29,6 +31,9 @@ Thumbs.db
 *.log
 logs/
 
+# Test coverage
+coverage/
+
 # Config (keep template, ignore actual secrets)
 config.yaml
 !config.example.yaml
@@ -37,3 +42,6 @@ config.yaml
 data/
 *.db
 *.sqlite
+
+# TypeScript
+*.tsbuildinfo

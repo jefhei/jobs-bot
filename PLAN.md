@@ -12,7 +12,7 @@
 
 ## Phase 0: Project Scaffolding
 
-### Task 0.1: Initialize monorepo with package structure
+### Task 0.1: [x] Initialize monorepo with package structure
 
 **Objective:** Create the monorepo skeleton with workspaces, TypeScript config, and directory layout.
 
