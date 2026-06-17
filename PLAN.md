@@ -90,7 +90,7 @@ npm init -w cli -y
 
 ---
 
-### Task 0.2: Install core dependencies
+### Task 0.2: [x] Install core dependencies
 
 **Objective:** Install TypeScript, Prisma, Redis client, and dev tooling across all packages.
 
