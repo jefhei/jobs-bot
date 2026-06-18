@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String   @id @default(cuid())
+  telegramId    String?  @unique
+  email         String?  @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  watchConfigs  WatchConfig[]
+  notificationSettings NotificationSetting[]
+}
+
+model WatchConfig {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id])
+  keyword          String
+  location         String?
+  jobType          String?  // fulltime | parttime | contract | internship
+  minSalary        Int?
+  experienceLevel  String?  // entry | mid | senior | lead | exec
+  sources          String[] // e.g. ["linkedin", "indeed"]
+  intervalMinutes  Int      @default(30)
+  notifyVia        String[] @default(["telegram"])
+  active           Boolean  @default(true)
+  lastPolledAt     DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  jobMatches       JobMatch[]
+}
+
+model JobListing {
+  id              String   @id
+  source          String
+  title           String
+  company         String
+  location        String?
+  type            String?
+  salaryMin       Int?
+  salaryMax       Int?
+  postedAt        DateTime
+  url             String
+  descriptionSnippet String?
+  tags            String[]
+  createdAt       DateTime @default(now())
+  matchedTo       JobMatch[]
+}
+
+model JobMatch {
+  id            String      @id @default(cuid())
+  jobId         String
+  job           JobListing  @relation(fields: [jobId], references: [id])
+  watchConfigId String
+  watchConfig   WatchConfig @relation(fields: [watchConfigId], references: [id])
+  notifiedAt    DateTime?
+  dismissed     Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+  saved         Boolean     @default(false)
+
+  @@unique([jobId, watchConfigId])
+}
+
+model NotificationSetting {
+  id        String @id @default(cuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id])
+  channel   String // telegram | email | webhook
+  enabled   Boolean @default(true)
+  throttlePerHour Int @default(20)
+}
