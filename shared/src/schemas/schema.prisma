@@ -14,6 +14,8 @@ model User {
   updatedAt     DateTime @updatedAt
   watchConfigs  WatchConfig[]
   notificationSettings NotificationSetting[]
+
+  @@map("users")
 }
 
 model WatchConfig {
@@ -33,6 +35,8 @@ model WatchConfig {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   jobMatches       JobMatch[]
+
+  @@index([userId])
 }
 
 model JobListing {
@@ -50,27 +54,33 @@ model JobListing {
   tags            String[]
   createdAt       DateTime @default(now())
   matchedTo       JobMatch[]
+
+  @@index([source])
 }
 
 model JobMatch {
   id            String      @id @default(cuid())
   jobId         String
-  job           JobListing  @relation(fields: [jobId], references: [id])
+  job           JobListing  @relation(fields: [jobId], references: [id], onDelete: Cascade)
   watchConfigId String
-  watchConfig   WatchConfig @relation(fields: [watchConfigId], references: [id])
+  watchConfig   WatchConfig @relation(fields: [watchConfigId], references: [id], onDelete: Cascade)
   notifiedAt    DateTime?
   dismissed     Boolean     @default(false)
   createdAt     DateTime    @default(now())
   saved         Boolean     @default(false)
 
   @@unique([jobId, watchConfigId])
+  @@index([watchConfigId])
 }
 
 model NotificationSetting {
   id        String @id @default(cuid())
   userId    String
-  user      User   @relation(fields: [userId], references: [id])
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   channel   String // telegram | email | webhook
   enabled   Boolean @default(true)
   throttlePerHour Int @default(20)
+
+  @@unique([userId, channel])
+  @@index([userId])
 }
