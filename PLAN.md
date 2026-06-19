@@ -127,7 +127,7 @@ npm install -w cli commander chalk cli-table3
 
 ---
 
-### Task 0.3: Set up Prisma schema
+### Task 0.3: [x] Set up Prisma schema
 
 **Objective:** Define the database schema for users, watch configs, and job history.
 
@@ -215,7 +215,7 @@ model NotificationSetting {
 
 ---
 
-### Task 0.4: Define shared TypeScript types
+### Task 0.4: [x] Define shared TypeScript types
 
 **Objective:** Create the core type definitions used across all packages.
 
