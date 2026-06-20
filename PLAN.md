@@ -234,7 +234,7 @@ model NotificationSetting {
 
 ---
 
-### Task 0.5: Set up Docker Compose for local dev
+### Task 0.5: [x] Set up Docker Compose for local dev
 
 **Objective:** Provide docker-compose.yml with PostgreSQL and Redis for local development.
 
