@@ -266,7 +266,7 @@ volumes:
 
 ## Phase 1: Shared Core
 
-### Task 1.1: Create Prisma client wrapper
+### Task 1.1: [x] Create Prisma client wrapper
 
 **Objective:** Export a singleton Prisma client for use across all packages.
 
@@ -290,7 +290,7 @@ export default prisma;
 
 ---
 
-### Task 1.2: Create Redis client wrapper
+### Task 1.2: [x] Create Redis client wrapper
 
 **Objective:** Export a singleton Redis client for dedup fingerprint storage.
 
