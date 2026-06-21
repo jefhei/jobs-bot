@@ -345,7 +345,7 @@ export async function markSeen(userId: string, jobId: string, source: string): P
 
 ---
 
-### Task 1.4: Implement base source adapter interface
+### Task 1.4: [x] Implement base source adapter interface
 
 **Objective:** Define the abstract base class all source adapters implement.
 
