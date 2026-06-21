@@ -313,7 +313,7 @@ export default redis;
 
 ---
 
-### Task 1.3: Implement Job deduplication utility
+### Task 1.3: [x] Implement Job deduplication utility
 
 **Objective:** Generate SHA-256 fingerprints for (userId + jobId + source) and manage 30-day TTL in Redis.
 
