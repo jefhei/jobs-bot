@@ -386,7 +386,7 @@ export interface SearchOptions {
 
 ---
 
-### Task 1.5: Implement Indeed source adapter
+### Task 1.5: [x] Implement Indeed source adapter
 
 **Objective:** Fetch jobs from Indeed Publisher API, normalize to Job schema.
 
