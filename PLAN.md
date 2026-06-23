@@ -400,7 +400,7 @@ export interface SearchOptions {
 
 ---
 
-### Task 1.6: Implement Greenhouse source adapter
+### Task 1.6: [x] Implement Greenhouse source adapter
 
 **Objective:** Fetch jobs from Greenhouse public Job Board API.
 
