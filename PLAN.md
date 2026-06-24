@@ -413,7 +413,7 @@ export interface SearchOptions {
 
 ---
 
-### Task 1.7: Implement Lever source adapter
+### Task 1.7: [x] Implement Lever source adapter
 
 **Objective:** Fetch jobs from Lever public Job Postings API.
 
