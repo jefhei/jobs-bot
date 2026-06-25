@@ -426,7 +426,7 @@ export interface SearchOptions {
 
 ---
 
-### Task 1.8: Implement LinkedIn source adapter (scrape fallback)
+### Task 1.8: [x] Implement LinkedIn source adapter (scrape fallback)
 
 **Objective:** Fetch jobs from LinkedIn — attempt official API first, fall back to polite scraping.
 
