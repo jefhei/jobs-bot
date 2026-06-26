@@ -439,7 +439,7 @@ export interface SearchOptions {
 
 ---
 
-### Task 1.9: Implement source adapter registry
+### Task 1.9: [x] Implement source adapter registry
 
 **Objective:** Provide a factory that returns the right adapter for a given source name.
 
