@@ -505,7 +505,7 @@ export function searchAllSources(
 
 ## Phase 2: Cron Monitor
 
-### Task 2.1: Create monitor entry point and configuration
+### Task 2.1: [x] Create monitor entry point and configuration
 
 **Objective:** Set up the monitor process that reads WatchConfigs from DB and schedules polls.
 
