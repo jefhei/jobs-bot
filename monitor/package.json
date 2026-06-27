@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@jobpulse/shared": "1.0.0",
     "bullmq": "^5.78.1"
   }
 }
