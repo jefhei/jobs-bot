@@ -519,18 +519,18 @@ export function searchAllSources(
 
 ---
 
-### Task 2.2: Implement BullMQ scheduler
+### Task 2.2: [x] Implement BullMQ scheduler
 
 **Objective:** Schedule polling jobs for active WatchConfigs based on their intervalMinutes.
 
-**File:** `monitor/src/scheduler.ts`
+**Files:**
+- Create: `monitor/src/scheduler.ts`
+- Create: `monitor/src/__tests__/scheduler.test.ts`
 
-- Uses BullMQ QueueScheduler
-- On startup: loads all active WatchConfigs from DB, schedules initial jobs
-- On new WatchConfig created: schedules immediately
-- On WatchConfig removed/deactivated: removes scheduled job
-- Randomized jitter (0–120s) per source to avoid rate limit spikes
-- Default repeat pattern: every 30 minutes (configurable per watch)
+- Uses BullMQ JobScheduler (v5 API)
+- On startup: loads all active WatchConfigs from DB, schedules jobs for each
+- Randomized jitter (0–120s) offset to avoid rate limit spikes
+- Exports: startScheduler, stopScheduler, scheduleWatch, removeWatchSchedule
 
 ---
 
