@@ -13,13 +13,9 @@ let queue: Queue | null = null;
 let httpServer: http.Server | null = null;
 let isShuttingDown = false;
 
-// ─── Placeholder scheduler reference ─────────────────────────────────────────
+// ─── Scheduler ────────────────────────────────────────────────────────────
 
-// Scheduler will be implemented in Task 2.2
-// import { startScheduler } from "./scheduler";
-function startScheduler(_config: MonitorConfig, _queue: Queue): void {
-  // Placeholder - no-op until Task 2.2
-}
+import { startScheduler as realStartScheduler } from "./scheduler";
 
 // ─── Health Check HTTP Server ────────────────────────────────────────────────
 
@@ -64,8 +60,8 @@ export async function start(): Promise<void> {
   // 4. Create health check HTTP server
   httpServer = createHealthServer();
 
-  // 5. Start scheduler (placeholder until Task 2.2)
-  startScheduler(config, queue);
+  // 5. Start scheduler
+  await realStartScheduler(config, queue);
 
   console.log("[@jobpulse/monitor] Started successfully");
 }

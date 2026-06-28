@@ -32,15 +32,22 @@ vi.mock("@jobpulse/shared", () => {
   };
 });
 
-// Mock BullMQ Queue
+// Mock BullMQ Queue and JobScheduler
+let mockJobSchedulerInstance: any;
 vi.mock("bullmq", () => {
   mockQueueClose = vi.fn().mockResolvedValue(undefined);
+  mockJobSchedulerInstance = {
+    upsertJobScheduler: vi.fn().mockResolvedValue(undefined),
+    removeJobScheduler: vi.fn().mockResolvedValue(undefined),
+    close: vi.fn().mockResolvedValue(undefined),
+  };
   return {
     Queue: vi.fn().mockImplementation((name: string) => ({
       close: mockQueueClose,
       name,
       client: { status: "ready" },
     })),
+    JobScheduler: vi.fn().mockImplementation(() => mockJobSchedulerInstance),
   };
 });
 
