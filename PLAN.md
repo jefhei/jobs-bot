@@ -534,7 +534,7 @@ export function searchAllSources(
 
 ---
 
-### Task 2.3: Implement poller worker
+### Task 2.3: [x] Implement poller worker
 
 **Objective:** Process queue jobs — fetch listings from source adapters, deduplicate, store new matches.
 
