@@ -550,7 +550,7 @@ export function searchAllSources(
 
 ---
 
-### Task 2.4: Implement notification dispatcher
+### Task 2.4: [x] Implement notification dispatcher
 
 **Objective:** Send new job matches to the user's configured notification channels.
 
