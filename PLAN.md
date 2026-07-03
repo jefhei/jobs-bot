@@ -565,7 +565,7 @@ export function searchAllSources(
 
 ---
 
-### Task 2.5: Implement failure alerting (ops channel)
+### Task 2.5: [x] Implement failure alerting (ops channel)
 
 **Objective:** Alert ops if any source fails more than 3 consecutive polls.
 
