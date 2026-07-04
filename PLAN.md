@@ -579,7 +579,7 @@ export function searchAllSources(
 
 ## Phase 3: Telegram Bot
 
-### Task 3.1: Create bot entry point with webhook/polling
+### Task 3.1: [x] Create bot entry point with webhook/polling
 
 **Objective:** Set up the Telegram bot with webhook mode (fallback to polling).
 
