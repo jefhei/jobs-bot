@@ -1,5 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
 import { loadBotConfig, BotConfig } from "./config";
+import { registerStartCommand } from "./commands/start";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -14,24 +15,8 @@ let isShuttingDown = false;
  * Each command uses onText with a regex matching /command or /command@botusername.
  */
 function registerCommands(botInstance: TelegramBot): void {
-  // /start - Welcome message
-  botInstance.onText(/\/start/, (msg) => {
-    const chatId = msg.chat.id;
-    botInstance.sendMessage(
-      chatId,
-      "🤖 Welcome to JobPulse!\n\n" +
-        "I help you find and monitor job listings across multiple platforms.\n\n" +
-        "Commands:\n" +
-        "/search - Search for jobs\n" +
-        "/watch - Set up a job watch\n" +
-        "/list - List your active watches\n" +
-        "/remove - Remove a watch\n" +
-        "/digest - Get a digest of recent matches\n" +
-        "/pause - Pause/resume a watch\n" +
-        "/sources - List available job sources\n" +
-        "/filters - Show your active filters"
-    );
-  });
+  // /start - Welcome message (with DB user creation)
+  registerStartCommand(botInstance);
 
   // /search - Search for jobs (placeholder)
   botInstance.onText(/\/search/, (msg) => {
