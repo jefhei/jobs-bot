@@ -593,7 +593,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.2: Implement /start command
+### Task 3.2: [x] Implement /start command
 
 **Objective:** Onboarding flow — collect initial preferences and store user in DB.
 
