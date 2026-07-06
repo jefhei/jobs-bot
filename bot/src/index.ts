@@ -1,6 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import { loadBotConfig, BotConfig } from "./config";
 import { registerStartCommand } from "./commands/start";
+import { registerSearchCommand } from "./commands/search";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -18,13 +19,8 @@ function registerCommands(botInstance: TelegramBot): void {
   // /start - Welcome message (with DB user creation)
   registerStartCommand(botInstance);
 
-  // /search - Search for jobs (placeholder)
-  botInstance.onText(/\/search/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "🔍 Search functionality coming soon!"
-    );
-  });
+  // /search - Search for jobs (natural-language one-time search)
+  registerSearchCommand(botInstance);
 
   // /watch - Set up a job watch (placeholder)
   botInstance.onText(/\/watch/, (msg) => {
