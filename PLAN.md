@@ -605,7 +605,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.3: Implement /search command
+### Task 3.3: [x] Implement /search command
 
 **Objective:** Natural-language one-time search across configured sources.
 
