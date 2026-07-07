@@ -619,7 +619,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.4: Implement /watch command
+### Task 3.4: [x] Implement /watch command
 
 **Objective:** Add a persistent keyword monitor.
 
