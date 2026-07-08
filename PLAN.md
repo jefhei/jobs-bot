@@ -632,7 +632,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.5: Implement /list and /remove commands
+### Task 3.5: [x] Implement /list and /remove commands
 
 **Objective:** Show and manage active watchers.
 
@@ -640,7 +640,7 @@ export function searchAllSources(
 **File:** `bot/src/commands/remove.ts`
 
 - /list: shows all active watchers with ID, keyword, location, status, last polled
-- /remove <id>: deactivates the watch and removes from scheduler
+- /remove &lt;id&gt;: deactivates the watch and removes from scheduler
 
 ---
 
