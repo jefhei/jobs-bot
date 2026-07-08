@@ -3,6 +3,8 @@ import { loadBotConfig, BotConfig } from "./config";
 import { registerStartCommand } from "./commands/start";
 import { registerSearchCommand } from "./commands/search";
 import { registerWatchCommand } from "./commands/watch";
+import { registerListCommand } from "./commands/list";
+import { registerRemoveCommand } from "./commands/remove";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -26,21 +28,11 @@ function registerCommands(botInstance: TelegramBot): void {
   // /watch - Set up a job watch
   registerWatchCommand(botInstance);
 
-  // /list - List active watches (placeholder)
-  botInstance.onText(/\/list/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "📋 Listing watches coming soon!"
-    );
-  });
+  // /list - List active watches
+  registerListCommand(botInstance);
 
-  // /remove - Remove a watch (placeholder)
-  botInstance.onText(/\/remove/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "🗑️ Remove watch coming soon!"
-    );
-  });
+  // /remove - Remove a watch
+  registerRemoveCommand(botInstance);
 
   // /digest - Get a digest (placeholder)
   botInstance.onText(/\/digest/, (msg) => {
