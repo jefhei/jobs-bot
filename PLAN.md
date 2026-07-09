@@ -644,7 +644,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.6: Implement /digest command
+### Task 3.6: [x] Implement /digest command
 
 **Objective:** Send a daily summary of all new matches from the last 24 hours.
 
