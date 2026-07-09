@@ -5,6 +5,7 @@ import { registerSearchCommand } from "./commands/search";
 import { registerWatchCommand } from "./commands/watch";
 import { registerListCommand } from "./commands/list";
 import { registerRemoveCommand } from "./commands/remove";
+import { registerDigestCommand } from "./commands/digest";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -34,13 +35,8 @@ function registerCommands(botInstance: TelegramBot): void {
   // /remove - Remove a watch
   registerRemoveCommand(botInstance);
 
-  // /digest - Get a digest (placeholder)
-  botInstance.onText(/\/digest/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "📊 Digest coming soon!"
-    );
-  });
+  // /digest - Get daily digest of new matches
+  registerDigestCommand(botInstance);
 
   // /pause - Pause/resume a watch (placeholder)
   botInstance.onText(/\/pause/, (msg) => {
