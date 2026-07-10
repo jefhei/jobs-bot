@@ -656,7 +656,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.7: Implement /pause, /sources, /filters commands
+### Task 3.7: [x] Implement /pause, /sources, /filters commands
 
 **Objective:** Utility commands for managing alerts and preferences.
 
