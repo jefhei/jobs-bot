@@ -6,6 +6,9 @@ import { registerWatchCommand } from "./commands/watch";
 import { registerListCommand } from "./commands/list";
 import { registerRemoveCommand } from "./commands/remove";
 import { registerDigestCommand } from "./commands/digest";
+import { registerPauseCommand } from "./commands/pause";
+import { registerSourcesCommand } from "./commands/sources";
+import { registerFiltersCommand } from "./commands/filters";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -38,29 +41,14 @@ function registerCommands(botInstance: TelegramBot): void {
   // /digest - Get daily digest of new matches
   registerDigestCommand(botInstance);
 
-  // /pause - Pause/resume a watch (placeholder)
-  botInstance.onText(/\/pause/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "⏸️ Pause/resume coming soon!"
-    );
-  });
+  // /pause - Pause/resume all watches
+  registerPauseCommand(botInstance);
 
-  // /sources - List available job sources (placeholder)
-  botInstance.onText(/\/sources/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "📡 Available sources coming soon!"
-    );
-  });
+  // /sources - List available job sources
+  registerSourcesCommand(botInstance);
 
-  // /filters - Show active filters (placeholder)
-  botInstance.onText(/\/filters/, (msg) => {
-    botInstance.sendMessage(
-      msg.chat.id,
-      "🔎 Active filters coming soon!"
-    );
-  });
+  // /filters - Show active filters
+  registerFiltersCommand(botInstance);
 }
 
 // ─── Start ───────────────────────────────────────────────────────────────────
