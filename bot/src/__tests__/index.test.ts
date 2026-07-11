@@ -7,6 +7,7 @@ const mockConsoleLog = vi.spyOn(console, "log").mockImplementation(() => {});
 // Shared mock references for TelegramBot
 let mockTelegramBotInstance: any;
 let mockOnTextHandler: ReturnType<typeof vi.fn>;
+let mockOnHandler: ReturnType<typeof vi.fn>;
 let mockStartPolling: ReturnType<typeof vi.fn>;
 let mockStopPolling: ReturnType<typeof vi.fn>;
 let mockIsPolling: ReturnType<typeof vi.fn>;
@@ -17,6 +18,7 @@ let mockSetWebhook: ReturnType<typeof vi.fn>;
 
 vi.mock("node-telegram-bot-api", () => {
   mockOnTextHandler = vi.fn();
+  mockOnHandler = vi.fn();
   mockStartPolling = vi.fn().mockResolvedValue(undefined);
   mockStopPolling = vi.fn().mockResolvedValue(undefined);
   mockIsPolling = vi.fn().mockReturnValue(false);
@@ -30,6 +32,7 @@ vi.mock("node-telegram-bot-api", () => {
       token,
       options,
       onText: mockOnTextHandler,
+      on: mockOnHandler,
       startPolling: mockStartPolling,
       stopPolling: mockStopPolling,
       isPolling: mockIsPolling,
@@ -37,7 +40,6 @@ vi.mock("node-telegram-bot-api", () => {
       closeWebHook: mockCloseWebHook,
       hasOpenWebHook: mockHasOpenWebHook,
       setWebhook: mockSetWebhook,
-      on: vi.fn(),
       removeTextListener: vi.fn(),
       clearTextListeners: vi.fn(),
     };
@@ -202,6 +204,17 @@ describe("bot entry point (index.ts)", () => {
       );
       expect(found).toBe(true);
     }
+  });
+
+  it("should register callback_query handler for inline buttons", async () => {
+    process.env.BOT_TOKEN="***";
+    mainModule = await import("../index");
+    await mainModule.start();
+
+    // Should have registered a callback_query handler via bot.on()
+    const onCalls = (mockOnHandler as ReturnType<typeof vi.fn>).mock.calls;
+    const events = onCalls.map((call: any[]) => call[0]);
+    expect(events).toContain("callback_query");
   });
 
   it("should create bot in webhook mode and call setWebhook", async () => {

@@ -9,6 +9,7 @@ import { registerDigestCommand } from "./commands/digest";
 import { registerPauseCommand } from "./commands/pause";
 import { registerSourcesCommand } from "./commands/sources";
 import { registerFiltersCommand } from "./commands/filters";
+import { registerInlineHandlers } from "./handlers/inline";
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -49,6 +50,9 @@ function registerCommands(botInstance: TelegramBot): void {
 
   // /filters - Show active filters
   registerFiltersCommand(botInstance);
+
+  // Inline button handlers for callback_query events
+  registerInlineHandlers(botInstance);
 }
 
 // ─── Start ───────────────────────────────────────────────────────────────────
