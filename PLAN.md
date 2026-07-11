@@ -670,7 +670,7 @@ export function searchAllSources(
 
 ---
 
-### Task 3.8: Implement inline button handlers
+### Task 3.8: [x] Implement inline button handlers
 
 **Objective:** Handle Save, Apply, Dismiss, Similar button callbacks on job listings.
 
