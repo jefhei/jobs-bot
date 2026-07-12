@@ -685,7 +685,7 @@ export function searchAllSources(
 
 ## Phase 4: CLI Tool
 
-### Task 4.1: Create CLI entry point with Commander
+### Task 4.1: [x] Create CLI entry point with Commander
 
 **Objective:** Set up the CLI binary with command routing.
 
