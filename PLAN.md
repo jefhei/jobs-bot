@@ -718,7 +718,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 4.2: Implement `jobpulse search` command
+### Task 4.2: [x] Implement `jobpulse search` command
 
 **Objective:** Search all sources and display results in terminal.
 
