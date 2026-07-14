@@ -734,7 +734,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 4.3: Implement `jobpulse watch` command group
+### Task 4.3: [x] Implement `jobpulse watch` command group
 
 **Objective:** Manage persistent keyword monitors from CLI.
 
