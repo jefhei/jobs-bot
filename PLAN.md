@@ -747,7 +747,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 4.4: Implement `jobpulse sources` and `config` commands
+### Task 4.4: [x] Implement `jobpulse sources` and `config` commands
 
 **Objective:** Manage source configuration and API keys.
 
