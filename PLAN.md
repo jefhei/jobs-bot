@@ -762,7 +762,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 4.5: Implement `jobpulse auth` command
+### Task 4.5: [x] Implement `jobpulse auth` command
 
 **Objective:** Authenticate CLI with the JobPulse backend for watch sync.
 
