@@ -129,6 +129,16 @@ export function registerWatchCommand(bot: any): void {
         },
       });
 
+      // Enqueue an immediate poll job for this watch config
+      try {
+        const { getPollQueue } = await import("../queue");
+        const pollQueue = getPollQueue();
+        await pollQueue.add(`poll-${watchConfig.id}`, { watchConfigId: watchConfig.id });
+      } catch (err) {
+        console.error("[@jobpulse/bot] Failed to enqueue immediate poll:", err);
+        // Non-fatal — the scheduler will pick it up on its next cycle
+      }
+
       // Send confirmation
       const locationText = location ? ` in <b>${escapeHtml(location)}</b>` : "";
       await bot.sendMessage(

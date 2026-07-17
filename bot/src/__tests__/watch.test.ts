@@ -16,6 +16,17 @@ vi.mock("@jobpulse/shared/db", () => ({
   },
 }));
 
+// ─── Mock queue ──────────────────────────────────────────────────────────────
+
+const mockQueueAdd = vi.fn().mockResolvedValue(undefined);
+const mockGetPollQueue = vi.fn(() => ({
+  add: mockQueueAdd,
+}));
+
+vi.mock("../queue", () => ({
+  getPollQueue: mockGetPollQueue,
+}));
+
 // ─── Mock TelegramBot ────────────────────────────────────────────────────────
 
 const mockSendMessage = vi.fn().mockResolvedValue({ message_id: 1 });
@@ -297,6 +308,70 @@ describe("registerWatchCommand", () => {
     expect(mockSendMessage).toHaveBeenCalledWith(
       msg.chat.id,
       expect.stringContaining("San Francisco"),
+      expect.any(Object)
+    );
+  });
+
+  // ─── NEW TESTS for Task 5.1 ────────────────────────────────────────────
+
+  it("should enqueue an immediate BullMQ poll job after creating WatchConfig", async () => {
+    mockUserFindUnique.mockResolvedValue({ id: "user-123", telegramId: "987654321" });
+    mockWatchConfigCreate.mockResolvedValue({
+      id: "watch-abc-123",
+      keyword: "software engineer",
+      location: null,
+      userId: "user-123",
+      sources: ["linkedin", "indeed", "greenhouse", "lever"],
+      intervalMinutes: 30,
+      active: true,
+      createdAt: new Date(),
+    });
+
+    const onText = vi.fn();
+    const bot = createMockBot(onText);
+    registerWatchCommand(bot);
+
+    const handler = onText.mock.calls[0][1];
+    const msg = makeMessage("/watch software engineer");
+    await handler(msg);
+
+    // Verify getPollQueue was called
+    expect(mockGetPollQueue).toHaveBeenCalledOnce();
+    // Verify queue.add was called with correct job name and data
+    expect(mockQueueAdd).toHaveBeenCalledWith(
+      "poll-watch-abc-123",
+      { watchConfigId: "watch-abc-123" }
+    );
+  });
+
+  it("should still succeed when enqueuing the immediate poll job fails", async () => {
+    mockUserFindUnique.mockResolvedValue({ id: "user-123", telegramId: "987654321" });
+    mockWatchConfigCreate.mockResolvedValue({
+      id: "watch-xyz-789",
+      keyword: "rust developer",
+      location: null,
+      userId: "user-123",
+      sources: ["linkedin", "indeed", "greenhouse", "lever"],
+      intervalMinutes: 30,
+      active: true,
+      createdAt: new Date(),
+    });
+    // Make queue.add reject
+    mockQueueAdd.mockRejectedValueOnce(new Error("Redis connection failed"));
+
+    const onText = vi.fn();
+    const bot = createMockBot(onText);
+    registerWatchCommand(bot);
+
+    const handler = onText.mock.calls[0][1];
+    const msg = makeMessage("/watch rust developer");
+    await handler(msg);
+
+    // Watch creation should still succeed (confirmation sent)
+    expect(mockWatchConfigCreate).toHaveBeenCalled();
+    expect(mockSendMessage).toHaveBeenCalledWith(
+      msg.chat.id,
+      expect.stringContaining("Watch Created"),
       expect.any(Object)
     );
   });
