@@ -776,7 +776,7 @@ program.parse(process.argv);
 
 ## Phase 5: Integration & Testing
 
-### Task 5.1: Wire up Bot → Monitor integration
+### Task 5.1: [x] Wire up Bot → Monitor integration
 
 **Objective:** When a user creates a watch via the bot, enqueue an immediate first poll in BullMQ.
 
