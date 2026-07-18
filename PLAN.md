@@ -789,7 +789,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 5.2: Wire up CLI → Backend API
+### Task 5.2: [x] Wire up CLI → Backend API
 
 **Objective:** CLI watch commands call a REST API (Fastify) to sync with the backend.
 
