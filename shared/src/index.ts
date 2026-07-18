@@ -4,3 +4,4 @@ export { redis, default as redisClient } from "./redis";
 export { makeFingerprint, isDuplicate, markSeen } from "./dedup";
 export { BaseSourceAdapter, type SourceAdapterConfig, type SearchOptions } from "./adapters/base";
 export { getAdapter, searchAllSources } from "./adapters/index";
+export { startApiServer, stopApiServer } from "./api";

@@ -9,10 +9,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fastify/auth": "^5.0.4",
+    "@fastify/cors": "^11.3.0",
     "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "axios": "^1.18.0",
     "cheerio": "^1.2.0",
+    "fastify": "^5.10.0",
     "ioredis": "^5.11.1",
     "prisma": "^7.8.0"
   }
