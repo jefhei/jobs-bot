@@ -860,7 +860,7 @@ docker compose down
 
 ## Phase 6: Documentation & Deployment
 
-### Task 6.1: Write README.md
+### Task 6.1: [x] Write README.md
 
 **File:** `README.md`
 
