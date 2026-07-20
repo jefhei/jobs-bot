@@ -872,7 +872,7 @@ docker compose down
 - Bot command reference
 - Contributing guide
 
-### Task 6.2: Write .env.example
+### Task 6.2: [x] Write .env.example
 
 **File:** `.env.example`
 
