@@ -802,7 +802,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 5.3: Unit tests — dedup utility
+### Task 5.3: [x] Unit tests — dedup utility
 
 **Objective:** Test fingerprint generation, duplicate detection, and TTL behavior.
 
@@ -815,7 +815,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 5.4: Unit tests — source adapter normalization
+### Task 5.4: [x] Unit tests — source adapter normalization
 
 **Objective:** Test each source adapter correctly normalizes API responses.
 
@@ -830,7 +830,7 @@ program.parse(process.argv);
 
 ---
 
-### Task 5.5: Integration test — end-to-end poll cycle
+### Task 5.5: [x] Integration test — end-to-end poll cycle
 
 **Objective:** Test a full poll cycle: adapter fetches → dedup → store → notify.
 
