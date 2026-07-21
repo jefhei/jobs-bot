@@ -904,7 +904,7 @@ NOTIFICATION_FROM=noreply@jobpulse.dev
 OPS_WEBHOOK_URL=
 ```
 
-### Task 6.3: Create Dockerfiles
+### Task 6.3: [x] Create Dockerfiles
 
 **Files:**
 - `bot/Dockerfile`
