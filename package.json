@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
+    "prepare": "prisma generate --schema=shared/src/schemas/schema.prisma",
     "test": "vitest run",
     "typecheck": "npm run typecheck --workspaces"
   },
