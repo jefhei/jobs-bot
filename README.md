@@ -1,5 +1,7 @@
 # 🎯 JobPulse
 
+![CI](https://github.com/jefhei/jobs-bot/actions/workflows/ci.yml/badge.svg)
+
 **Intelligent Job Aggregation & Monitoring Platform**
 
 JobPulse is a TypeScript monorepo that searches, monitors, and notifies you about job listings across multiple platforms — LinkedIn, Indeed, Greenhouse, and Lever — all at once. Built for job seekers and recruiters who want real-time, deduplicated job intelligence delivered to Telegram, email, or webhooks.
