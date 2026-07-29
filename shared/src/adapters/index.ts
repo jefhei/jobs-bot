@@ -4,6 +4,7 @@ import { IndeedAdapter } from "./indeed";
 import { GreenhouseAdapter } from "./greenhouse";
 import { LeverAdapter } from "./lever";
 import { LinkedInAdapter } from "./linkedin";
+import { GlassdoorAdapter } from "./glassdoor";
 
 // ─── Module-level adapter cache ─────────────────────────────────────────────
 
@@ -28,6 +29,8 @@ function createAdapter(source: JobSource): BaseSourceAdapter {
       return new LeverAdapter();
     case "linkedin":
       return new LinkedInAdapter();
+    case "glassdoor":
+      return new GlassdoorAdapter();
     default:
       throw new Error(`Unknown source: ${source}`);
   }
@@ -45,7 +48,7 @@ export function getAdapter(source: JobSource): BaseSourceAdapter {
 
 // ─── Default source list ────────────────────────────────────────────────────
 
-const DEFAULT_SOURCES: JobSource[] = ["indeed", "greenhouse", "lever", "linkedin"];
+const DEFAULT_SOURCES: JobSource[] = ["indeed", "greenhouse", "lever", "linkedin", "glassdoor"];
 
 /**
  * Search across multiple job sources in parallel.

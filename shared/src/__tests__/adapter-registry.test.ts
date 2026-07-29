@@ -29,8 +29,14 @@ describe('getAdapter', () => {
     expect(adapter.config.name).toBe('linkedin');
   });
 
+  it('should return an adapter for "glassdoor"', () => {
+    const adapter = getAdapter('glassdoor');
+    expect(adapter).toBeDefined();
+    expect(adapter.config.name).toBe('glassdoor');
+  });
+
   it('should throw for unknown source', () => {
-    expect(() => getAdapter('glassdoor' as JobSource)).toThrow('Unknown source');
+    expect(() => getAdapter('nonexistent' as JobSource)).toThrow('Unknown source');
   });
 
   it('should return the same adapter instance on repeated calls (singleton)', () => {
