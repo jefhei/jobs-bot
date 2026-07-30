@@ -16,6 +16,7 @@ export interface SearchOptions {
   jobType?: string;
   minSalary?: number;
   experienceLevel?: string;
+  remote?: boolean;
 }
 
 // ─── Abstract Base Class ────────────────────────────────────────────────────

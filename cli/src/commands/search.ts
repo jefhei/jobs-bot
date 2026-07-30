@@ -15,6 +15,7 @@ export const searchCommand = new Command("search")
   .option("--sources <sources>", "comma-separated source list")
   .option("--json", "output as JSON")
   .option("--csv", "output as CSV")
+  .option("-r, --remote", "filter for remote/telecommute jobs only")
   .action(async (query: string, options: Record<string, unknown>) => {
     // Respect NO_COLOR
     if (process.env.NO_COLOR) {
@@ -30,6 +31,9 @@ export const searchCommand = new Command("search")
     }
     if (options.salary) {
       searchOptions.minSalary = options.salary as number;
+    }
+    if (options.remote) {
+      searchOptions.remote = true;
     }
 
     let sources: JobSource[] | undefined;
